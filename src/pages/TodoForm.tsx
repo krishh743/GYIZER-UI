@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Button, Form, Input, Modal } from "antd"; // Import Input from Ant Design, not TextArea
-
+import { Button, Form, Input, Modal } from "antd";
 interface Task {
   id: number;
   title: string;
@@ -14,7 +13,7 @@ function TodoForm() {
   const [editedContent, setEditedContent] = useState<string>("");
   const [deleteTaskId, setDeleteTaskId] = useState<number | null>(null);
   const [isModalVisible, setIsModalVisible] = useState(false);
-
+  const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
   const addTaskToDo = (values: { title: string; content: string }) => {
     const newTask: Task = {
       id: Date.now(),
@@ -48,6 +47,8 @@ function TodoForm() {
     });
   };
 
+  console.log(editingTaskId, "editingTaskId");
+
   const handleUpdate = () => {
     if (editingTask) {
       const updatedTasks = tasks.map((task) =>
@@ -59,7 +60,7 @@ function TodoForm() {
       setTasks(updatedTasks);
       setEditingTask(null);
 
-      // Reset form fields
+      setEditingTaskId(null);
       form.resetFields();
     }
   };
@@ -85,7 +86,7 @@ function TodoForm() {
 
   const [form] = Form.useForm();
   return (
-    <div className="flex flex-col gap-20 justify-center items-center h-[88vh]">
+<div className="flex flex-col gap-20 justify-center items-center pt-2 lg:pt-20">
       <Form
         form={form}
         name="todo_form"
@@ -117,7 +118,7 @@ function TodoForm() {
                 value={editingTask ? editedContent : undefined}
                 onChange={(e) => setEditedContent(e.target.value)}
                 placeholder="Controlled autosize"
-                autoSize={{ minRows: 3, maxRows: 5 }}
+                autoSize={{ minRows: 1, maxRows: 5 }}
               />
             </Form.Item>
           ) : (
@@ -150,15 +151,11 @@ function TodoForm() {
             {editingTask ? (
               <img
                 src="/images/ic_update.svg"
-                className="cursor-pointer "
+                className="cursor-pointer"
                 alt=""
               />
             ) : (
-              <img
-                src="/images/ic_add.svg"
-                className="cursor-pointer "
-                alt=""
-              />
+              <img src="/images/ic_add.svg" className="cursor-pointer" alt="" />
             )}
           </Button>
         </div>
@@ -167,8 +164,11 @@ function TodoForm() {
       {tasks.length > 0 ? (
         <div className="task-border-bg w-full p-4 text-center border shadow sm:p-8">
           <div className="grid grid-cols-1 gap-6 lg:grid-cols-3 2xl:grid-cols-3">
-            <div className="task-tickets-border-bg border grid grid-cols w-full text-start p-4 rounded-xl">
-              {tasks.map((task) => (
+            {tasks.map((task, index) => (
+              <div
+                key={index}
+                className="task-tickets-border-bg border grid grid-cols w-full text-start p-4 rounded-xl"
+              >
                 <div
                   key={task.id}
                   className="flex items-center justify-between"
@@ -182,14 +182,22 @@ function TodoForm() {
                     <Button
                       className="cursor-pointer h-[32px] w-[32px] m-0 p-0 border-none"
                       type="primary"
-                      onClick={() => handleEdit(task)}
+                      onClick={() => {
+                        handleEdit(task);
+                        setEditingTaskId(task.id);
+                      }}
                     >
                       <img
-                        src="/images/ic_edit.svg"
+                        src={
+                          editingTaskId === task.id
+                            ? "/images/ic_edit1.svg"
+                            : "/images/ic_edit.svg"
+                        }
                         className="cursor-pointer h-full w-full"
                         alt=""
                       />
                     </Button>
+
                     <Button
                       className="cursor-pointer h-[32px] w-[32px] m-0 p-0 border-none"
                       type="primary"
@@ -203,8 +211,8 @@ function TodoForm() {
                     </Button>
                   </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       ) : (
@@ -228,23 +236,23 @@ function TodoForm() {
         footer={<></>}
         wrapClassName="custom-modal"
       >
-        <div className="p-4 flex justify-center bg-black items-center custom-div">
+        <div className="p-10 flex justify-center items-center">
           <b className="text-sm text-white text-center">Delete this task?</b>
         </div>
-        <div className=" bg-black flex items-center p-4 space-x-2 border-gray-200 rounded-b dark:border-gray-600">
+        <div className="  flex items-center p-4 space-x-2 border-gray-200 rounded-b dark:border-gray-600">
           <button
-            onClick={handleCancel}
+            onClick={handleOk}
             type="button"
             className="w-full bg-[#1F1E1B]  text-white rounded-xl p-2 font-bold  border-[2px] border-primary"
           >
-            Cancel
+            Yes
           </button>
           <button
+            onClick={handleCancel}
             type="button"
             className="w-full text-white bg-[#1F1E1B] rounded-xl p-2 font-bold border-[2px] border-primary"
-            onClick={handleOk}
           >
-            Delete
+            No
           </button>
         </div>
       </Modal>

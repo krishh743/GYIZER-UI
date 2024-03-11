@@ -1,7 +1,8 @@
 import React, { ReactNode } from "react";
 import { Layout } from "antd";
+import Header from "../header/Header";
 
-const { Header, Content } = Layout;
+const { Content } = Layout;
 
 interface AppLayoutProps {
   children: ReactNode;
@@ -10,17 +11,8 @@ interface AppLayoutProps {
 const AppLayout: React.FC<AppLayoutProps> = ({ children }) => {
   return (
     <Layout className="bg-background">
-      <Header
-        className="flex justify-start items-center rounded-b-lg bg-[#242320] border-[2px] border-primary sticky top-0 z-10"
-        style={{ zIndex: 1 }}
-      >
-        <div>
-          <img src="/images/logo.svg" alt="" />
-        </div>
-      </Header>
-      <Content style={{ padding: "2rem" }} className="bg-background text-white">
-        {children}
-      </Content>
+      <Header />
+      <Content className=" text-white p-6">{children}</Content>
     </Layout>
   );
 };

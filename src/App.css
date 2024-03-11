@@ -1,10 +1,10 @@
-
-
+* {
+  background-color: #242320;
+}
 
 .input-forms {
   /* min-width: 466px; */
 }
-
 
 .body-border-bg {
   background-color: #242320;
@@ -45,34 +45,31 @@
   /* width: 345px; */
 }
 
-.custom-div {
-  background-color: #000; /* Black background color */
-  border-top: 1px solid #ff8303; /* Border color and width */
-
-}
 
 
 .custom-modal {
-  background-color: rgba(0, 0, 0, 0.6) !important; /* Adjust the opacity as needed */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.6
+  ) !important; /* Adjust the opacity as needed */
   display: flex;
   align-items: center;
   justify-content: center;
 
+  /* box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); */
 }
 
 .custom-modal .ant-modal-content {
   background-color: transparent; /* Makes the modal content transparent */
+  border-top: 2px solid #ff8303; /* Border color and width */
+
 }
 
 .custom-modal .ant-modal-body {
   background-color: #fff; /* Set the background color of the modal body */
   border-radius: 8px; /* Set the border radius of the modal body */
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Add a box shadow for depth */
 }
 
 
-@media screen and (max-width: 768px) {
-  .input-forms {
-    /* min-width: 100%; */
-  }
-}

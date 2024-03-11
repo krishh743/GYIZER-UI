@@ -85,7 +85,7 @@ function TodoForm() {
 
   const [form] = Form.useForm();
   return (
-    <div className="flex flex-col gap-20  justify-center items-center h-[88vh]">
+    <div className="flex flex-col gap-20 justify-center items-center h-[88vh]">
       <Form
         form={form}
         name="todo_form"
@@ -135,7 +135,7 @@ function TodoForm() {
             </Form.Item>
           )}
         </div>
-        <div className="flex h-full w-full">
+        <div className="flex ">
           <Button
             onClick={() => {
               if (editingTask) {
@@ -144,19 +144,19 @@ function TodoForm() {
                 form.submit();
               }
             }}
-            className="cursor-pointer h-full w-full m-0 p-0 border-primary:hover"
+            className="cursor-pointer  m-0 p-0 border-primary:hover"
             type="primary"
           >
             {editingTask ? (
               <img
                 src="/images/ic_update.svg"
-                className="cursor-pointer h-full w-full"
+                className="cursor-pointer "
                 alt=""
               />
             ) : (
               <img
                 src="/images/ic_add.svg"
-                className="cursor-pointer h-full w-full"
+                className="cursor-pointer "
                 alt=""
               />
             )}
@@ -216,56 +216,38 @@ function TodoForm() {
           </div>
         </div>
       )}
-      {/* <Modal
-      centered
-      title="Confirm Deletion"
-      visible={isModalVisible}
-      // onOk={<></>}
-      // onCancel={handleCancel}
-      wrapClassName="custom-modal"
-    >
-      <p>Are you sure you want to delete this task?</p>
-      <div className="button-container">
-        <Button className="cancel-button" onClick={handleCancel}>
-          Cancel
-        </Button>
-        <Button className="ok-button" type="primary" onClick={handleOk}>
-          OK
-        </Button>
-      </div>
-    </Modal> */}
-<Modal
-  open={isModalVisible}
-  onCancel={handleCancel}
-  onOk={handleOk}
-  closeIcon={<></>}
-  closable={false}
-  width={400}
-  centered
-  footer={<></>}
-  wrapClassName="custom-modal"
->
-  <div className="p-4 flex justify-center items-center">
-    <b className="text-sm text-center">Delete this task?</b>
-  </div>
-  <div className="flex items-center p-4 space-x-2 border-gray-200 rounded-b dark:border-gray-600">
-    <button
-      onClick={handleCancel}
-      type="button"
-      className="w-full bg-[#1F1E1B]  text-white rounded-xl p-2 font-bold  border-[2px] border-primary"
-    >
-      Cancel
-    </button>
-    <button
-      type="button"
-      className="w-full text-white bg-[#1F1E1B] rounded-xl p-2 font-bold border-[2px] border-primary"
-      onClick={handleOk}
-    >
-     Delete
-    </button>
-  </div>
-</Modal>
 
+      <Modal
+        open={isModalVisible}
+        onCancel={handleCancel}
+        onOk={handleOk}
+        closeIcon={<></>}
+        closable={false}
+        width={400}
+        centered
+        footer={<></>}
+        wrapClassName="custom-modal"
+      >
+        <div className="p-4 flex justify-center bg-black items-center custom-div">
+          <b className="text-sm text-white text-center">Delete this task?</b>
+        </div>
+        <div className=" bg-black flex items-center p-4 space-x-2 border-gray-200 rounded-b dark:border-gray-600">
+          <button
+            onClick={handleCancel}
+            type="button"
+            className="w-full bg-[#1F1E1B]  text-white rounded-xl p-2 font-bold  border-[2px] border-primary"
+          >
+            Cancel
+          </button>
+          <button
+            type="button"
+            className="w-full text-white bg-[#1F1E1B] rounded-xl p-2 font-bold border-[2px] border-primary"
+            onClick={handleOk}
+          >
+            Delete
+          </button>
+        </div>
+      </Modal>
     </div>
   );
 }

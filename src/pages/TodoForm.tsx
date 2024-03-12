@@ -86,7 +86,7 @@ function TodoForm() {
 
   const [form] = Form.useForm();
   return (
-<div className="flex flex-col gap-20 justify-center items-center pt-2 lg:pt-20">
+    <div className="flex flex-col gap-20 justify-center items-center pt-2 lg:pt-20">
       <Form
         form={form}
         name="todo_form"

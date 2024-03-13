@@ -10,6 +10,7 @@ function App() {
       <AppLayout>
         <TodoForm />
       </AppLayout>
+      
     </div>
   );
 }

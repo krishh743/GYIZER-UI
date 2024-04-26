@@ -1,6 +1,6 @@
 import { BsArrowRight } from "react-icons/bs";
 import { Input } from "antd";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // import ZEBRA_ICON from "../../../assets/images/header-icons/zl.png";
 
@@ -74,6 +74,26 @@ const SignUp = () => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
     return emailRegex.test(email);
   };
+
+
+
+
+
+const storeLocal = (token:any)=>{
+  localStorage.setItem(token,"krishnadmfklsdjlfjml")
+}
+
+useEffect(()=>{
+  storeLocal("tokenforkrishna")
+},[])
+
+
+
+
+
+
+
+
 
   return (
     <div className="min-h-screen   flex items-center gap-y-10 flex-col md:py-10 justify-center">

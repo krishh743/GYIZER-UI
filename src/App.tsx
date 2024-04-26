@@ -1,6 +1,7 @@
 import React from "react";
 import "./App.css";
 import SignUp from "./pages/auth/Signup";
+import TodoForm from "./pages/TodoForm";
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div className="App">
       
       <SignUp/>
+      <TodoForm/>
     </div>
   );
 }

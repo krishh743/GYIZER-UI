@@ -2,8 +2,6 @@ import React from "react";
 
 function Header() {
   return (
-    // className="flex justify-start items-center rounded-b-lg bg-[#242320] border-[2px] border-primary sticky top-0 z-10"
-    // style={{ zIndex: 1 }}
     <header>
       <nav className=" px-4 lg:px-6 py-4   rounded-b-lg bg-[#242320] border-[2px]  border-primary sticky top-0 z-10" style={{ zIndex: 1 }}>
         <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">

@@ -6,7 +6,7 @@ import TodoForm from "./pages/TodoForm";
 function App() {
   return (
     <div className="App">
-      <SignUp />
+      {/* <SignUp /> */}
       <TodoForm />
     </div>
   );

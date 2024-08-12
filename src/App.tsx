@@ -1,7 +1,5 @@
 import React, { useCallback, useMemo, useState } from "react";
 import "./App.css";
-import SignUp from "./pages/auth/Signup";
-import TodoForm from "./pages/TodoForm";
 import Practice from "./components/Practice";
 import TheameDark from "./components/ThemeProvider";
 

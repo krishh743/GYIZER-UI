@@ -25,6 +25,8 @@ function Header() {
               </svg>
             </button>
             {/* Logo - Visible in Desktop/Web View */}
+
+      
             <a href="#" className="hidden lg:flex items-center">
               <img
                 src="/images/logo.svg"

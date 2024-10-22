@@ -12,7 +12,7 @@ function App() {
 
   const result = useMemo(() => {
     console.log("Calculating...");
-    // Example calculation, just squaring the count
+
     return count + 1;
   }, [count]);
 

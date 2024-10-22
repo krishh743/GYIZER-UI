@@ -3,7 +3,7 @@ import React from "react";
 export default function HeaderTwo() {
   const [navbarOpen, setNavbarOpen] = React.useState(false);
   const [flyer, setFlyer] = React.useState(false);
-  const [flyerTwo, setFlyerTwo] = React.useState(false);
+  const [ setFlyerTwo] = React.useState(false);
 
   return (
     <header className="fixed top-0 w-full clearNav z-50">
@@ -45,6 +45,7 @@ export default function HeaderTwo() {
           }
         >
           <div className="md:ml-auto md:mr-auto font-4 pt-1 md:pl-14 pl-1 flex flex-wrap items-center md:text-base text-1xl md:justify-center justify-items-start">
+            {/* // eslint-disable-next-line jsx-a11y/anchor-is-valid */}
             <a className="mr-11 pr-2 cursor-pointer text-gray-300 hover:text-white font-semibold tr04">
               Features
             </a>
